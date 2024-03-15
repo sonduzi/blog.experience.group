@@ -20,10 +20,11 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.example.blog_experiencegroup_project.R
 
 @Composable
-fun LoginScreen(){
+fun LoginScreen(navController: NavController){
     val (email, setEmail) = rememberSaveable {
         mutableStateOf("")
     }
@@ -113,7 +114,7 @@ fun LoginScreen(){
                     style = TextStyle(fontSize = 12.sp),
                     textAlign = TextAlign.End,
                     modifier = Modifier.clickable {
-                        // 비밀번호 찾기 화면으로 이동 필요
+                        navController.navigate("FindPassword")
                     }
                 )
             }
@@ -152,7 +153,7 @@ fun LoginScreen(){
         Spacer(modifier = Modifier.height(10.dp))
         Button(
             onClick = {
-                // 네이버 로그인
+                navController.navigate("SignUp")
             },
             modifier = Modifier
                 .fillMaxWidth()
@@ -169,11 +170,4 @@ fun LoginScreen(){
         }
     }
 }
-
-@Preview
-@Composable
-fun DefaultPreview(){
-    LoginScreen()
-}
-
 
