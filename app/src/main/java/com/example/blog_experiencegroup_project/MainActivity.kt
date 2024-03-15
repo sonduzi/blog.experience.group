@@ -37,7 +37,8 @@ class MainActivity : ComponentActivity() {
                     FindPasswordScreen(navController)
                 }
                 composable(route="SignUp"){
-                    SignUpScreen(navController)
+                    //SignUpScreen(navController)
+                    SignUpScreen()
                 }
             }
         }
