@@ -16,6 +16,8 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.input.KeyboardType
+import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -62,7 +64,7 @@ fun SignUpScreen(/*navController: NavController*/) {
             )
         },
         content = {
-            Box(
+            Column (
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(bottom = it.calculateBottomPadding()) // 하단 패딩을 계산하여 content를 BottomAppBar 위로 밀어냄
@@ -71,32 +73,38 @@ fun SignUpScreen(/*navController: NavController*/) {
                     modifier = Modifier
                         .fillMaxSize()
                         .verticalScroll(scrollState),
-                    verticalArrangement = Arrangement.Center,
-                    horizontalAlignment = Alignment.CenterHorizontally,
                 ) {
                     Text(
                         text = "회원가입",
                         style = TextStyle(fontSize = 30.sp),
-                        modifier = Modifier.padding(20.dp)
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 50.dp),
+                        textAlign = TextAlign.Center,
                     )
-                    Spacer(modifier = Modifier.height(20.dp))
                     OutlinedTextField(
                         value = email,
                         onValueChange = setEmail,
                         label = { Text("이메일") },
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp),
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Email),
                     )
                     OutlinedTextField(
                         value = name,
                         onValueChange = setName,
                         label = { Text("이름") },
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp),
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                         enabled = false
                     )
+
                     Row(
-                        verticalAlignment = Alignment.CenterVertically
+                        verticalAlignment = Alignment.CenterVertically,
+                        modifier = Modifier.padding(horizontal = 16.dp),
                     ) {
                         OutlinedTextField(
                             value = phone,
@@ -128,32 +136,41 @@ fun SignUpScreen(/*navController: NavController*/) {
                         value = name,
                         onValueChange = setName,
                         label = { Text("닉네임") },
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp),
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                     )
                     OutlinedTextField(
                         value = name,
                         onValueChange = setName,
                         label = { Text("비밀번호") },
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp),
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                     )
+
                     OutlinedTextField(
                         value = name,
                         onValueChange = setName,
                         label = { Text("비밀번호 확인") },
-                        modifier = Modifier.fillMaxWidth(),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 16.dp),
                         keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Text),
                     )
                     Spacer(modifier = Modifier.height(10.dp))
+
                     Box(
                         modifier = Modifier
-                            .background(color = Color(0xFFF7F6F6), shape = RoundedCornerShape(8.dp))
+                            .padding(horizontal = 16.dp, vertical = 5.dp)
+                            .background(color = Color(0xFFF7F6F6),
+                        shape = RoundedCornerShape(8.dp))
                     ) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
-
-                            ) {
+                        ) {
                             Checkbox(
                                 checked = agree,
                                 onCheckedChange = setAgree,
@@ -161,25 +178,35 @@ fun SignUpScreen(/*navController: NavController*/) {
                             )
                             Text(
                                 text = "전체약관에 동의합니다.",
+                                fontSize = 12.sp, // 텍스트 크기 설정
                                 modifier = Modifier.fillMaxWidth()
                             )
                         }
                     }
-                    Spacer(modifier = Modifier.height(5.dp))
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
-
-                        ) {
+                        modifier = Modifier
+                            .padding(horizontal = 16.dp)
+                            .height(30.dp)
+                    ) {
                         Checkbox(
                             checked = agree,
                             onCheckedChange = setAgree,
-                            modifier = Modifier.padding(end = 1.dp) // 체크박스와 텍스트 사이 간격 조절
+                            modifier = Modifier
+                                .width(24.dp)
+                                .padding(end = 5.dp)
                         )
                         Text(
                             text = "서비스이용약관에 동의합니다.(필수)",
+                            fontSize = 12.sp, // 텍스트 크기 설정
+                            color = Color(0xFFAFAFAF)
                         )
+                        Spacer(modifier = Modifier.width(5.dp))
                         Text(
                             text = "내용보기",
+                            color = Color(0xFFAFAFAF),
+                            fontSize = 10.sp, // 텍스트 크기 설정
+                            textDecoration = TextDecoration.Underline, // 텍스트에 밑줄 추가
                             modifier = Modifier.clickable {
                                 // 내용보기 선택 시
                             }
@@ -187,106 +214,155 @@ fun SignUpScreen(/*navController: NavController*/) {
                     }
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
-
-                        ) {
+                        modifier = Modifier
+                            .padding(horizontal = 16.dp)
+                            .height(30.dp)
+                    ) {
                         Checkbox(
                             checked = agree,
                             onCheckedChange = setAgree,
-                            modifier = Modifier.padding(end = 1.dp) // 체크박스와 텍스트 사이 간격 조절
+                            modifier = Modifier
+                                .width(24.dp)
+                                .padding(end = 5.dp)
                         )
                         Text(
-                            text = "서비스이용약관에 동의합니다.(필수)",
-                        )
-                        Text(
-                            text = "내용보기",
-                            modifier = Modifier.clickable {
-                                // 내용보기 선택 시
-                            }
+                            color = Color(0xFFAFAFAF),
+                            text = "14세 이상입니다.(필수)",
+                            fontSize = 12.sp, // 텍스트 크기 설정
                         )
                     }
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
-
-                        ) {
+                        modifier = Modifier
+                            .padding(horizontal = 16.dp)
+                            .height(30.dp)
+                    ) {
                         Checkbox(
                             checked = agree,
                             onCheckedChange = setAgree,
-                            modifier = Modifier.padding(end = 1.dp) // 체크박스와 텍스트 사이 간격 조절
+                            modifier = Modifier
+                                .width(24.dp)
+                                .padding(end = 5.dp)
                         )
                         Text(
-                            text = "서비스이용약관에 동의합니다.(필수)",
-                        )
-                        Text(
-                            text = "내용보기",
-                            modifier = Modifier.clickable {
-                                // 내용보기 선택 시
-                            }
+                            color = Color(0xFFAFAFAF),
+                            text = "개인정보 수집 및 이용에 동의합니다.(필수)",
+                            fontSize = 12.sp, // 텍스트 크기 설정
                         )
                     }
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
-
-                        ) {
+                        modifier = Modifier
+                            .padding(horizontal = 16.dp)
+                            .height(30.dp)
+                    ) {
                         Checkbox(
                             checked = agree,
                             onCheckedChange = setAgree,
-                            modifier = Modifier.padding(end = 1.dp) // 체크박스와 텍스트 사이 간격 조절
+                            modifier = Modifier
+                                .width(24.dp)
+                                .padding(end = 5.dp)
                         )
                         Text(
-                            text = "서비스이용약관에 동의합니다.(필수)",
-                        )
-                        Text(
-                            text = "내용보기",
-                            modifier = Modifier.clickable {
-                                // 내용보기 선택 시
-                            }
+                            color = Color(0xFFAFAFAF),
+                            fontSize = 12.sp, // 텍스트 크기 설정
+                            text = "신규 및 추천 캠페인 이벤트 정보등의 메일 수신에 동의합니다. (선택)",
                         )
                     }
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
-
-                        ) {
+                        modifier = Modifier
+                            .padding(horizontal = 16.dp)
+                            .height(30.dp)
+                    ) {
                         Checkbox(
                             checked = agree,
                             onCheckedChange = setAgree,
-                            modifier = Modifier.padding(end = 1.dp) // 체크박스와 텍스트 사이 간격 조절
+                            modifier = Modifier
+                                .width(24.dp)
+                                .padding(end = 5.dp)
                         )
                         Text(
-                            text = "서비스이용약관에 동의합니다.(필수)",
+                            text = "수집한 개인 정보의 이용 및 제3자 제공에 동의합니다.(필수)",
+                            color = Color(0xFFAFAFAF),
+                            fontSize = 12.sp, // 텍스트 크기 설정
                         )
+                        Spacer(modifier = Modifier.width(5.dp))
                         Text(
                             text = "내용보기",
+                            fontSize = 10.sp, // 텍스트 크기 설정
+                            color = Color(0xFFAFAFAF),
+                            textDecoration = TextDecoration.Underline, // 텍스트에 밑줄 추가
                             modifier = Modifier.clickable {
                                 // 내용보기 선택 시
                             }
                         )
                     }
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Surface(
+                        modifier = Modifier
+                            .padding(horizontal = 16.dp),
+                        color = Color.White // 배경색을 흰색으로 설정
+                    ) {
+                        Column(
+                            modifier = Modifier
+                                .border(1.dp, Color.Black)
                         ) {
-                        Checkbox(
-                            checked = agree,
-                            onCheckedChange = setAgree,
-                            modifier = Modifier.padding(end = 1.dp) // 체크박스와 텍스트 사이 간격 조절
-                        )
-                        Text(
-                            text = "서비스이용약관에 동의합니다.(필수)",
-                        )
-                        Text(
-                            text = "내용보기",
-                            modifier = Modifier.clickable {
-                                // 내용보기 선택 시
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                            ) {
+                                Text(
+                                    modifier = Modifier.weight(1f),
+                                    color = Color(0xFFAFAFAF),
+                                    fontSize = 12.sp, // 텍스트 크기 설정
+                                    text = "목적"
+                                )
+                                Text(
+                                    modifier = Modifier.weight(1f),
+                                    color = Color(0xFFAFAFAF),
+                                    fontSize = 12.sp, // 텍스트 크기 설정
+                                    text = "항목"
+                                )
+                                Text(
+                                    modifier = Modifier.weight(1f),
+                                    color = Color(0xFFAFAFAF),
+                                    fontSize = 12.sp, // 텍스트 크기 설정
+                                    text = "보유 및 이용기간"
+                                )
                             }
-                        )
+                            Row(
+                                verticalAlignment = Alignment.CenterVertically,
+                            ) {
+                                Text(
+                                    modifier = Modifier.weight(1f),
+                                    color = Color(0xFFAFAFAF),
+                                    fontSize = 12.sp, // 텍스트 크기 설정
+                                    text = "이용자 식별 및\n본인 여부 확인",
+                                )
+                                Text(
+                                    modifier = Modifier.weight(1f),
+                                    color = Color(0xFFAFAFAF),
+                                    fontSize = 12.sp, // 텍스트 크기 설정
+                                    text = "이메일 주소, 비밀번호",
+                                )
+                                Text(
+                                    modifier = Modifier
+                                        .weight(1f),
+                                    color = Color(0xFFAFAFAF),
+                                    fontSize = 12.sp, // 텍스트 크기 설정
+                                    text = "회원탈퇴시 까지",
+                                )
+                            }
+                        }
                     }
-                    Spacer(modifier = Modifier.height(30.dp))
+                    Spacer(modifier = Modifier.height(40.dp))
                     Button(
                         onClick = {
                             //navController.navigate("SignUp")
                         },
                         modifier = Modifier
                             .fillMaxWidth()
+                            .padding(horizontal = 16.dp)
                             .height(55.dp),
                         colors = ButtonDefaults.buttonColors(
                             backgroundColor = Color(0xFFFF6F00),
@@ -304,6 +380,7 @@ fun SignUpScreen(/*navController: NavController*/) {
                         },
                         modifier = Modifier
                             .fillMaxWidth()
+                            .padding(horizontal = 16.dp)
                             .height(55.dp),
                         colors = ButtonDefaults.buttonColors(
                             backgroundColor = Color.White,
