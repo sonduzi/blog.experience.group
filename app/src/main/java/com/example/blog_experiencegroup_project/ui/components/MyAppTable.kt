@@ -56,10 +56,3 @@ fun RowScope.TableCell(
         )
     }
 }
-
-
-@Preview
-@Composable
-fun DefaultPreview(){
-    MyAppTable()
-}

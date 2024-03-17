@@ -29,7 +29,7 @@ import com.example.blog_experiencegroup_project.ui.components.MyAppTable
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
-fun SignUpScreen(/*navController: NavController*/) {
+fun SignUpScreen(navController: NavController) {
     val scaffoldState = rememberScaffoldState()
 
     val (email, setEmail) = rememberSaveable {
@@ -359,8 +359,4 @@ fun SignUpScreen(/*navController: NavController*/) {
     )
 }
 
-@Preview
-@Composable
-fun DefaultPreview(){
-    SignUpScreen()
-}
+

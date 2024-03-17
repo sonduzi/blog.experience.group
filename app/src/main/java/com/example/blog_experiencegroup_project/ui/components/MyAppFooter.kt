@@ -21,11 +21,8 @@ fun MyAppFooter() {
             .padding(20.dp)
     ) {
         Image(
-            painter = painterResource(id = R.drawable.reviewfactory_logo),
-            contentDescription = "reviewfactorylogo",
-            modifier = Modifier
-                .width(150.dp)
-                .height(50.dp)
+            painter = painterResource(id = R.drawable.logo_chd),
+            contentDescription = "logo",
         )
         Row(){
             Text("Tel : xxx-xxxx")
@@ -49,10 +46,4 @@ fun MyAppFooter() {
             Text("광고문의")
         }
     }
-}
-
-@Preview
-@Composable
-fun DefaultPReview(){
-    MyAppFooter()
 }

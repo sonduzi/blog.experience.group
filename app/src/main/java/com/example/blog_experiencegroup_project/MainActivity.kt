@@ -18,6 +18,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.blog_experiencegroup_project.ui.components.MyAppBottomAppBar
 import com.example.blog_experiencegroup_project.ui.screens.FindPasswordScreen
+import com.example.blog_experiencegroup_project.ui.screens.HomeScreen
 import com.example.blog_experiencegroup_project.ui.screens.LoginScreen
 import com.example.blog_experiencegroup_project.ui.screens.SignUpScreen
 
@@ -37,41 +38,9 @@ class MainActivity : ComponentActivity() {
                     FindPasswordScreen(navController)
                 }
                 composable(route="SignUp"){
-                    //SignUpScreen(navController)
-                    SignUpScreen()
+                    SignUpScreen(navController)
                 }
             }
         }
     }
-}
-
-@SuppressLint("UnusedMaterialScaffoldPaddingParameter")
-@Composable
-fun HomeScreen(navController : NavController){
-    val scaffoldState = rememberScaffoldState()
-    Scaffold(
-        scaffoldState = scaffoldState,
-        bottomBar = {
-            MyAppBottomAppBar(
-                onHomeClick = { /*TODO*/ },
-                onCategoryClick = { /*TODO*/ },
-                onAskClick = { /*TODO*/ },
-                onAdAskClick = { /*TODO*/ },
-                onLoginClick = {
-                    navController.navigate("Login")
-                }
-            )
-        },
-        content = {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(16.dp),
-                verticalArrangement = Arrangement.Center,
-                horizontalAlignment = Alignment.CenterHorizontally
-            ) {
-                Text(text= "Home page")
-            }
-        }
-    )
 }
