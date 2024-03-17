@@ -25,6 +25,7 @@ import androidx.navigation.NavController
 import com.example.blog_experiencegroup_project.R
 import com.example.blog_experiencegroup_project.ui.component.MyAppFooter
 import com.example.blog_experiencegroup_project.ui.components.MyAppBottomAppBar
+import com.example.blog_experiencegroup_project.ui.components.MyAppTable
 
 @SuppressLint("UnusedMaterialScaffoldPaddingParameter")
 @Composable
@@ -283,7 +284,7 @@ fun SignUpScreen(/*navController: NavController*/) {
                                 .padding(end = 5.dp)
                         )
                         Text(
-                            text = "수집한 개인 정보의 이용 및 제3자 제공에 동의합니다.(필수)",
+                            text = "수집한 개인 정보의 이용 및 제3자 제공에 동의합니다.\n(필수)",
                             color = Color(0xFFAFAFAF),
                             fontSize = 12.sp, // 텍스트 크기 설정
                         )
@@ -299,62 +300,7 @@ fun SignUpScreen(/*navController: NavController*/) {
                         )
                     }
                     Spacer(modifier = Modifier.height(10.dp))
-                    Surface(
-                        modifier = Modifier
-                            .padding(horizontal = 16.dp),
-                        color = Color.White // 배경색을 흰색으로 설정
-                    ) {
-                        Column(
-                            modifier = Modifier
-                                .border(1.dp, Color.Black)
-                        ) {
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically,
-                            ) {
-                                Text(
-                                    modifier = Modifier.weight(1f),
-                                    color = Color(0xFFAFAFAF),
-                                    fontSize = 12.sp, // 텍스트 크기 설정
-                                    text = "목적"
-                                )
-                                Text(
-                                    modifier = Modifier.weight(1f),
-                                    color = Color(0xFFAFAFAF),
-                                    fontSize = 12.sp, // 텍스트 크기 설정
-                                    text = "항목"
-                                )
-                                Text(
-                                    modifier = Modifier.weight(1f),
-                                    color = Color(0xFFAFAFAF),
-                                    fontSize = 12.sp, // 텍스트 크기 설정
-                                    text = "보유 및 이용기간"
-                                )
-                            }
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically,
-                            ) {
-                                Text(
-                                    modifier = Modifier.weight(1f),
-                                    color = Color(0xFFAFAFAF),
-                                    fontSize = 12.sp, // 텍스트 크기 설정
-                                    text = "이용자 식별 및\n본인 여부 확인",
-                                )
-                                Text(
-                                    modifier = Modifier.weight(1f),
-                                    color = Color(0xFFAFAFAF),
-                                    fontSize = 12.sp, // 텍스트 크기 설정
-                                    text = "이메일 주소, 비밀번호",
-                                )
-                                Text(
-                                    modifier = Modifier
-                                        .weight(1f),
-                                    color = Color(0xFFAFAFAF),
-                                    fontSize = 12.sp, // 텍스트 크기 설정
-                                    text = "회원탈퇴시 까지",
-                                )
-                            }
-                        }
-                    }
+                    MyAppTable()
                     Spacer(modifier = Modifier.height(40.dp))
                     Button(
                         onClick = {
