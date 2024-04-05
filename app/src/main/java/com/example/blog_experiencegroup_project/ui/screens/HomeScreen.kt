@@ -36,7 +36,9 @@ fun HomeScreen(navController : NavController){
                 onCategoryClick = {
                     navController.navigate("Category")
                 },
-                onAskClick = { /*TODO*/ },
+                onAskClick = {
+                    navController.navigate("FAQ")
+                },
                 onAdAskClick = { /*TODO*/ },
                 onLoginClick = {
                    navController.navigate("Login")

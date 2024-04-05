@@ -1,10 +1,7 @@
 package com.example.blog_experiencegroup_project.ui.screens
 
-import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
+import androidx.compose.foundation.*
 import androidx.compose.foundation.layout.*
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -22,7 +19,7 @@ import androidx.navigation.NavController
 import com.example.blog_experiencegroup_project.R
 
 @Composable
-fun CategoryScreen(/*navController: NavController*/){
+fun CategoryScreen(navController: NavController){
     val scrollState = rememberScrollState()
     Column(
         modifier = Modifier.verticalScroll(scrollState)
@@ -42,7 +39,11 @@ fun CategoryScreen(/*navController: NavController*/){
             Image(
                 painter = painterResource(id = R.drawable.baseline_close_24),
                 contentDescription = "null",
-                modifier = Modifier.align(Alignment.CenterEnd)
+                modifier = Modifier
+                    .align(Alignment.CenterEnd)
+                    .clickable {
+                        navController.navigateUp()
+                    }
             )
         }
         HorizontalLine()
@@ -92,7 +93,8 @@ fun CategoryScreen(/*navController: NavController*/){
                     Image(
                         painter = painterResource(id = R.drawable.baseline_navigate_next_24),
                         contentDescription = "null",
-                        modifier = Modifier.align(Alignment.CenterEnd)
+                        modifier = Modifier
+                            .align(Alignment.CenterEnd)
                     )
                 }
                 HorizontalLine()
@@ -157,8 +159,9 @@ fun HorizontalLine(height : Dp = 1.dp){
     )
 }
 
+/*
 @Preview
 @Composable
 fun DefaultPreview(){
     CategoryScreen()
-}
+}*/

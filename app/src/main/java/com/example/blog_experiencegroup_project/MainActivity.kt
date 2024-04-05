@@ -29,7 +29,10 @@ class MainActivity : ComponentActivity() {
                     HomeScreen(navController)
                 }
                 composable(route="Category"){
-                    CategoryScreen()
+                    CategoryScreen(navController)
+                }
+                composable(route="FAQ"){
+                    FAQScreen(navController)
                 }
                 composable(route="Login"){
                     LoginScreen(navController)
