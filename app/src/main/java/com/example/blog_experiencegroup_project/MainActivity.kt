@@ -17,10 +17,7 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.blog_experiencegroup_project.ui.components.MyAppBottomAppBar
-import com.example.blog_experiencegroup_project.ui.screens.FindPasswordScreen
-import com.example.blog_experiencegroup_project.ui.screens.HomeScreen
-import com.example.blog_experiencegroup_project.ui.screens.LoginScreen
-import com.example.blog_experiencegroup_project.ui.screens.SignUpScreen
+import com.example.blog_experiencegroup_project.ui.screens.*
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -30,6 +27,9 @@ class MainActivity : ComponentActivity() {
             NavHost(navController = navController, startDestination = "Home"){
                 composable(route="Home"){
                     HomeScreen(navController)
+                }
+                composable(route="Category"){
+                    CategoryScreen()
                 }
                 composable(route="Login"){
                     LoginScreen(navController)

@@ -72,7 +72,7 @@ fun LoginScreen(navController: NavController){
                 .fillMaxWidth()
                 .height(55.dp),
             colors = ButtonDefaults.buttonColors(
-                backgroundColor = Color(0xFFFF6F00),
+                backgroundColor = Color(0xFFF16D6D),
                 contentColor = Color.White
             )
         ){
@@ -94,7 +94,7 @@ fun LoginScreen(navController: NavController){
                     modifier = Modifier.size(10.dp)
                         .align(Alignment.CenterStart),
                     colors = CheckboxDefaults.colors( // 색상을 커스텀
-                        checkedColor = Color(0xFFFF6F00), // 체크된 상태의 색상
+                        checkedColor = Color(0xFFF16D6D), // 체크된 상태의 색상
                         uncheckedColor = Color(0xFFB9B9B9) // 체크되지 않은 상태의 색상
                     )
                 )
@@ -160,9 +160,9 @@ fun LoginScreen(navController: NavController){
                 .height(55.dp),
             colors = ButtonDefaults.buttonColors(
                 backgroundColor = Color.White,
-                contentColor = Color(0xFFFF6F00),
+                contentColor = Color(0xFFF16D6D),
             ),
-            border = BorderStroke(1.dp, Color(0xFFFF6F00)),
+            border = BorderStroke(1.dp, Color(0xFFF16D6D)),
         ){
             Text(
                 "회원가입"

@@ -2,6 +2,6 @@
 <resources>
 
     <style name="Theme.Blogexperiencegroupproject" parent="android:Theme.Material.Light.NoActionBar">
-        <item name="android:statusBarColor">@color/orage</item>
+        <item name="android:statusBarColor">@color/pink</item>
     </style>
 </resources>

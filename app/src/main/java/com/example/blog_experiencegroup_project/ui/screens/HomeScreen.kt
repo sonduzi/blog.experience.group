@@ -2,28 +2,24 @@ package com.example.blog_experiencegroup_project.ui.screens
 
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
-import androidx.compose.material.Scaffold
-import androidx.compose.material.Text
-import androidx.compose.material.rememberScaffoldState
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.example.blog_experiencegroup_project.R
 import com.example.blog_experiencegroup_project.ui.component.MyAppFooter
+import com.example.blog_experiencegroup_project.ui.components.LiveReviewList
 import com.example.blog_experiencegroup_project.ui.components.MyAppBottomAppBar
 import com.example.blog_experiencegroup_project.ui.components.ReviewItemList
 
@@ -37,7 +33,9 @@ fun HomeScreen(navController : NavController){
         bottomBar = {
             MyAppBottomAppBar(
                 onHomeClick = { /*TODO*/ },
-                onCategoryClick = { /*TODO*/ },
+                onCategoryClick = {
+                    navController.navigate("Category")
+                },
                 onAskClick = { /*TODO*/ },
                 onAdAskClick = { /*TODO*/ },
                 onLoginClick = {
@@ -72,10 +70,10 @@ fun HomeScreen(navController : NavController){
                                 .align(Alignment.CenterVertically)
                         ) {
                             Image(
-                                painter = painterResource(id = R.drawable.logo_chd),
+                                painter = painterResource(id = R.drawable.reviewland_logo),
                                 contentDescription = "logo",
                                 modifier = Modifier
-                                    .width(120.dp)
+                                    .width(136.dp)
                                     .height(40.dp)
                                     .align(Alignment.Center)
                             )
@@ -94,13 +92,23 @@ fun HomeScreen(navController : NavController){
                             )
                         }
                     }
-                    ScrollableBanners()
+                    ScrollableBanners(bannerType = 0)
+                    ReviewItemList(title = "인기 캠페인")
 
-                    Text(
-                        text = "인기 캠페인",
-                        modifier = Modifier.padding(16.dp)
+                    ScrollableBanners(bannerType = 1)
+                    ReviewItemList(title = "마감임박 캠페인")
+
+                    Spacer(modifier = Modifier.height(10.dp))
+                    Image(
+                        painter = painterResource(id = R.drawable.middle_banner3),
+                        contentDescription = "null",
+                        modifier = Modifier.fillMaxWidth()
                     )
-                    ReviewItemList()
+                    ReviewItemList(title = "새로운 캠페인")
+                    LiveReviewList()
+
+                    Spacer(modifier = Modifier.height(10.dp))
+                    MyAppFooter()
                 }
             }
         }
@@ -108,8 +116,16 @@ fun HomeScreen(navController : NavController){
 }
 
 @Composable
-fun ScrollableBanners() {
-    val bannerList = listOf(R.drawable.banner1, R.drawable.banner2, R.drawable.banner3)
+fun ScrollableBanners(bannerType : Int) {
+    val mainBannerList = listOf(R.drawable.banner1, R.drawable.banner2, R.drawable.banner3)
+    val middleBannerList = listOf(R.drawable.middle_banner1, R.drawable.middle_banner2)
+    var bannerList: List<Int>? = null;
+
+    if(bannerType == 0){
+        bannerList = mainBannerList
+    }else{
+        bannerList = middleBannerList
+    }
 
     var currentIndex by remember { mutableStateOf(0) }
     val listState = rememberLazyListState(initialFirstVisibleItemIndex = currentIndex)
@@ -126,27 +142,45 @@ fun ScrollableBanners() {
 
     LazyRow(
         state = listState,
-        modifier = Modifier.padding(10.dp)
+        modifier = Modifier.padding(5.dp)
     ) {
         items(bannerList.size) { index ->
-            BannerItem(imageResourceId = bannerList[index])
+            if(bannerType == 0)
+                MainBannerItem(imageResourceId = bannerList[index])
+            else
+                MiddleBannerItem(imageResourceId = bannerList[index])
         }
     }
 }
 
 @Composable
-fun BannerItem(imageResourceId: Int) {
+fun MainBannerItem(imageResourceId: Int) {
     Box(
         modifier = Modifier
             .width(320.dp)
             .height(170.dp)
-            .padding(5.dp)
+            .padding(10.dp)
     ) {
         Image(
             painter = painterResource(id = imageResourceId),
             contentDescription = "null",
             contentScale = ContentScale.Crop,
             modifier = Modifier.clip(RoundedCornerShape(10.dp))
+        )
+    }
+}
+
+@Composable
+fun MiddleBannerItem(imageResourceId: Int) {
+    Box(
+        modifier = Modifier
+            .width(320.dp)
+            .height(100.dp)
+            .padding(3.dp)
+    ) {
+        Image(
+            painter = painterResource(id = imageResourceId),
+            contentDescription = "null",
         )
     }
 }
