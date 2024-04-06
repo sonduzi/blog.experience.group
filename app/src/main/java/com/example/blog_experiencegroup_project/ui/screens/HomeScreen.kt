@@ -39,7 +39,9 @@ fun HomeScreen(navController : NavController){
                 onAskClick = {
                     navController.navigate("FAQ")
                 },
-                onAdAskClick = { /*TODO*/ },
+                onAdAskClick = {
+                    // 기획 후 구현 필요함.
+                },
                 onLoginClick = {
                    navController.navigate("Login")
                 }

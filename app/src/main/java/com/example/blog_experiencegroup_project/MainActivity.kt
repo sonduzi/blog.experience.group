@@ -43,6 +43,9 @@ class MainActivity : ComponentActivity() {
                 composable(route="SignUp"){
                     SignUpScreen(navController)
                 }
+                composable(route="ReviewDetail"){
+                    ReviewDetailScreen()
+                }
             }
         }
     }
